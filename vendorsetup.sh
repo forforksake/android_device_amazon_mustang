@@ -1,3 +1,0 @@
-add_lunch_combo omni_mustang-eng
-add_lunch_combo omni_mustang-userdebug
-add_lunch_combo omni_mustang-user

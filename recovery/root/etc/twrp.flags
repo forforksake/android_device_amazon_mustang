@@ -1,2 +1,19 @@
-/vendor        ext4   /dev/block/platform/mtk-msdc.0/by-name/vendor      flags=backup=1
-/vendor_image  emmc   /dev/block/platform/mtk-msdc.0/by-name/vendor      flags=backup=1
+
+/system           ext4    /dev/block/platform/soc/11230000.mmc/by-name/system                       flags=backup=1
+/vendor           ext4    /dev/block/platform/soc/11230000.mmc/by-name/vendor                       flags=backup=1
+/data             ext4    /dev/block/platform/soc/11230000.mmc/by-name/userdata                     flags=backup=1
+/storage	      ext4	  /data/media/0                                                             flags=display="Internal Storage";backup=1;usermrf;fsflags="bind";removable
+/cache	          ext4	  /dev/block/platform/soc/11230000.mmc/by-name/cache	                    flags=display="Cache";backup=1
+
+/boot             emmc    /dev/block/platform/soc/11230000.mmc/by-name/boot                         flags=backup=1,flashimg
+/system_image     emmc    /dev/block/platform/soc/11230000.mmc/by-name/system                       flags=backup=1,flashimg
+/vendor_image     emmc    /dev/block/platform/soc/11230000.mmc/by-name/vendor                       flags=backup=1,flashimg
+/recovery         emmc    /dev/block/platform/soc/11230000.mmc/by-name/recovery                     flags=backup=1,flashimg
+
+/sdcard1          vfat	  /dev/block/platform/soc/11240000.mmc/by-num/p1 	                        flags=display="MicroSD";storage;wipeingui;removable
+/usb_otg	      vfat	  /devices/platform/mt_usb*   /devices/platform/soc/11270000.usb*	        flags=display="USB-Storage";storage;wipeingui;removable
+
+/nvram	          emmc	  /dev/block/platform/soc/11230000.mmc/by-name/nvram	                    flags=backup=1
+/proinfo	      emmc	  /dev/block/platform/soc/11230000.mmc/by-name/proinfo	                    flags=backup=1
+/lk	              emmc	  /dev/block/platform/soc/11230000.mmc/by-name/lk	                        flags=backup=1
+/misc	          emmc    /dev/block/platform/soc/11230000.mmc/by-name/MISC	                        flags=backup=1

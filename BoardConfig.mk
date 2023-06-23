@@ -1,20 +1,14 @@
-TARGET_NO_BOOTLOADER := true
-
 DEVICE_PATH := device/amazon/mustang
 
 TARGET_BOARD_PLATFORM := mt8163
+TARGET_BOOTLOADER_BOARD_NAME := mustang
+TARGET_NO_BOOTLOADER := true
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_USES_METADATA_PARTITION := true
 
-#TARGET_ARCH := arm64
-#TARGET_ARCH_VARIANT := armv8-a
-#TARGET_CPU_ABI := arm64-v8a
-#TARGET_CPU_ABI2 :=
-#TARGET_CPU_VARIANT := generic
-
-#TARGET_2ND_ARCH := arm
-#TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-#TARGET_2ND_CPU_ABI := armeabi-v7a
-#TARGET_2ND_CPU_ABI2 := armeabi
-#TARGET_2ND_CPU_VARIANT := cortex-a7
+# Verified Boot
+BOARD_AVB_ENABLE := false
+PLATFORM_SDK_VERSION := 25
 
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -40,20 +34,32 @@ TW_THEME := portrait_mdpi
 
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/recovery.fstab
 
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/zImage
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
+BOARD_KERNEL_IMAGE_NAME := zImage
 
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00000000 --ramdisk_offset 0x03400000 --second_offset 0x00e80000 --tags_offset 0x07f80000
 # original - not enough space for us!
 # BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00000000 --ramdisk_offset 0x03f80000 --second_offset 0x00e80000 --tags_offset 0x07f80000
 
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone2/temp
-
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_USE_SYSTEM_VOLD := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_DEFAULT_BRIGHTNESS := 128
-
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+TW_INCLUDE_NTFS_3G := true
+TW_USE_TOOLBOX := true
+TARGET_USES_MKE2FS := true
+TW_NO_LEGACY_PROPS := true
+TW_NO_SCREEN_BLANK := true
+TW_EXCLUDE_APEX := true
+TW_FRAMERATE := 60
+TW_DEVICE_VERSION := mustang_CFKod_XDA
 TW_AMONET := true
 TW_DEFAULT_BACKUP_LIST := "/system_image;/vendor_image;/data;/boot;"
